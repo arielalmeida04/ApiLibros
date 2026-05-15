@@ -12,4 +12,5 @@ public interface ICategoriaService {
 	public ResponseEntity<CategoriaResponseRest> create(Categoria requestCreacion);
 	public ResponseEntity<CategoriaResponseRest> update(Categoria requestModificacion, Long id);
 	public ResponseEntity<CategoriaResponseRest> delete(Long id);
+	
 }

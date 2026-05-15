@@ -20,16 +20,14 @@ import com.company.books.backend.response.CategoriaResponseRest;
 
 @Service
 public class CategoriaServiceIMPL implements ICategoriaService {
-
-    private final PrimeraApiRestBooksApplication primeraApiRestBooksApplication;
 	
 	private static final Logger log = LoggerFactory.getLogger(CategoriaServiceIMPL.class);
 	
-	@Autowired
-	private ICategoriaDAO categoriaDAO;
+	
+	private final ICategoriaDAO categoriaDAO;
 
-    CategoriaServiceIMPL(PrimeraApiRestBooksApplication primeraApiRestBooksApplication) {
-        this.primeraApiRestBooksApplication = primeraApiRestBooksApplication;
+    public CategoriaServiceIMPL(ICategoriaDAO categoriaDAO) {
+        this.categoriaDAO = categoriaDAO;
     }
 	
 	@Override
