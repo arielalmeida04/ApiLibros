@@ -14,6 +14,7 @@ import jakarta.persistence.Table;
 @JsonPropertyOrder({"id", "name", "descripcion"})
 public class Categoria implements Serializable {
 
+
 	/**
 	 * 
 	 */
@@ -42,5 +43,13 @@ public class Categoria implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
+	public Categoria() {
+		super();
+	}
+	public Categoria(Long id, String name, String descripcion) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.descripcion = descripcion;
+	}
 }
