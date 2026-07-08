@@ -42,14 +42,20 @@ public class ConfigSecurity {
     	        .requestMatchers(HttpMethod.DELETE, "/v1/libros/**").hasAnyRole("JEFE")
     	        
     	        //CRUD con la otra entidad Categoria
-    	        .requestMatchers(HttpMethod.GET, "/v1/categorias").hasAnyRole("EMPLEADO", "JEFE")
+    	        //.requestMatchers(HttpMethod.GET, "/v1/categorias").hasAnyRole("EMPLEADO", "JEFE")
         	    .requestMatchers(HttpMethod.GET, "/v1/categorias/**").hasAnyRole("EMPLEADO", "JEFE")
         	        .requestMatchers(HttpMethod.POST, "/v1/categorias").hasAnyRole("JEFE")
         	        .requestMatchers(HttpMethod.PUT, "/v1/categorias/**").hasAnyRole("JEFE")
         	        .requestMatchers(HttpMethod.DELETE, "/v1/categorias/**").hasAnyRole("JEFE")
         	        
         	        //Acceso a las propiedades privadas o documentacion del sistema
-        	        .requestMatchers("/v1/authenticate","/v3/api-docs/**","/swagger-ui/**","/swagger-ui.html").permitAll();
+        	        .requestMatchers(
+        	                "/v1/categorias",
+        	                "/v1/authenticate",
+        	                "/v3/api-docs/**",
+        	                "/swagger-ui/**",
+        	                "/swagger-ui.html")
+        	        .permitAll();
     	    
     	    
     	    
@@ -59,6 +65,7 @@ public class ConfigSecurity {
     			);
     	
 		http.httpBasic(Customizer.withDefaults());
+		http.cors(Customizer.withDefaults());
 		http.csrf(csrf ->csrf.disable());
 		return http.build();
 	}
